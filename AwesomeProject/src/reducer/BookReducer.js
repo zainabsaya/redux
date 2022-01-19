@@ -1,4 +1,5 @@
 import { TabRouter } from "@react-navigation/native";
+import { act } from "react-test-renderer";
 import { fetchBooksSuccess } from "../action/Book.action";
 import {
     ADD_BOOK_ERROR,
@@ -16,10 +17,11 @@ import {
 
   const defaultState ={
       books:[],
-      craditem:[]
+      craditem:[],
+
  }
  const bookReducer =(state=defaultState,action)=>{
-  console.log("cardItem",state.craditem)
+
     switch(action.type)
     {
             case FETCH_BOOK_SUCCESS:
@@ -27,11 +29,12 @@ import {
           
             case 'ADD_TO_CART':
               return{...state,craditem:[...state.craditem,action.payload]}
-
+              
               case 'REMOVE_FROM_CART':
             return {...state, craditem:state.craditem.filter(craditem=> craditem[0].Id !== action.payload)}
+            case 'UPDATEVALUE':
+            return{...state}
             default:return state;
     }
  }
-
- export default bookReducer;
+export default bookReducer;

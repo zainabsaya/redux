@@ -16,7 +16,7 @@ class ViewCard extends Component {
 
   render() {
     const {name, url, price} = this.props.route.params;
-    console.log('thi', this.props.state);
+   
    const removeProduct =(Id)=>{
       console.log("Id",Id);
       this.props.onRemove(Id);
